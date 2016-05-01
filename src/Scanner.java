@@ -1,4 +1,3 @@
-import lejos.nxt.LCD;
 import lejos.nxt.LightSensor;
 import lejos.nxt.SensorPort;
 import lejos.nxt.TouchSensor;
@@ -12,16 +11,15 @@ public class Scanner
    {
       lightSensor = new LightSensor(SensorPort.S3);
       lightSensor.setFloodlight(false);
-      
+
       touchSensor = new TouchSensor(SensorPort.S1);
    }
-   
+
    public boolean PaperIn()
    {
-      LCD.drawInt(lightSensor.getLightValue(), 1, 1);
-      return lightSensor.getLightValue() < 27;
+      return lightSensor.getLightValue() < 20;
    }
-   
+
    public boolean CarriageHome()
    {
       return touchSensor.isPressed();

@@ -1,3 +1,4 @@
+import lejos.nxt.LCD;
 import lejos.nxt.MotorPort;
 
 public class Motor
@@ -49,47 +50,6 @@ public class Motor
       CarrigeStop();
    }
 
-   public void UpRight(int distance)
-   {
-      Stop();
-      MotorPort.B.resetTachoCount();
-      PaperOut(PAPER_SPEED);
-      CarriageRight(PAPER_SPEED - 10);
-      while (MotorPort.B.getTachoCount() > -distance)
-         Sleep(1);
-      Stop();
-   }
-
-   public void UpLeft(int distance)
-   {
-      MotorPort.B.resetTachoCount();
-      PaperOut(PAPER_SPEED);
-      CarriageLeft(PAPER_SPEED - 10);
-      while (MotorPort.B.getTachoCount() > -distance)
-         Sleep(1);
-      Stop();
-   }
-
-   public void DownRight(int distance)
-   {
-      MotorPort.B.resetTachoCount();
-      PaperIn(PAPER_SPEED);
-      CarriageRight(PAPER_SPEED - 10);
-      while (MotorPort.B.getTachoCount() < distance)
-         Sleep(1);
-      Stop();
-   }
-
-   public void DownLeft(int distance)
-   {
-      MotorPort.B.resetTachoCount();
-      PaperIn(PAPER_SPEED);
-      CarriageLeft(PAPER_SPEED - 10);
-      while (MotorPort.B.getTachoCount() < distance)
-         Sleep(1);
-      Stop();
-   }
-
    public void LoadPaper()
    {
       PaperIn(PAPER_SPEED);
@@ -127,7 +87,7 @@ public class Motor
    public void PenDown()
    {
       Stop();
-      
+
       MotorPort.C.controlMotor(70, 2);
       Sleep(300);
       Stop();
@@ -188,7 +148,7 @@ public class Motor
       MotorPort.A.controlMotor(100, 3);
       MotorPort.B.controlMotor(100, 3);
       MotorPort.C.controlMotor(100, 3);
-      Sleep(100);
+      Sleep(50);
    }
 
    private void Sleep(int millisec)
@@ -199,6 +159,8 @@ public class Motor
       }
       catch (InterruptedException e)
       {
+         LCD.clear();
+         LCD.drawString(e.toString(), 1, 1);
       }
    }
 }

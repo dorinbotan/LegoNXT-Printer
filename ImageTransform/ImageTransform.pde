@@ -3,8 +3,8 @@ PrintWriter output;
 
 void setup() {
   size(140,140);
-  img = loadImage( "st.jpg" );
-  output = createWriter("st.rtf"); 
+  img = loadImage( "st1.jpg" );
+  output = createWriter("st1.rtf"); 
 }
 
 void draw() {
@@ -25,12 +25,12 @@ void draw() {
       if (r > 128 && g > 128 && b > 128) 
         {
           stroke(255, 255, 255);
-          output.print("0,");  
+          output.print("false,");  
         }
       else 
         {
           stroke(0, 0, 0);
-          output.print("1,");  
+          output.print("true,");  
         }
       point(x, y);    
     }
