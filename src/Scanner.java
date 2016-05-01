@@ -18,9 +18,8 @@ public class Scanner
    
    public boolean PaperIn()
    {
-      LCD.clear();
       LCD.drawInt(lightSensor.getLightValue(), 1, 1);
-      return lightSensor.getLightValue() < 16;
+      return lightSensor.getLightValue() < 27;
    }
    
    public boolean CarriageHome()
